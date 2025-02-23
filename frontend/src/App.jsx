@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard.jsx";
 import EmployeeDashboard from "./pages/EmployeeDashboard.jsx";
+import PrivateRoutes from "./utils/PrivateRoutes.jsx";
+import Rolebased from "./utils/Rolebased.jsx";
 
 const App = () => {
   return (
@@ -10,7 +12,16 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/admin-dashboard" />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route
+          path="/admin-dashboard"
+          element={
+            <PrivateRoutes>
+              <Rolebased requiredRole={["admin"]}>
+                <AdminDashboard />
+              </Rolebased>
+            </PrivateRoutes>
+          }
+        />
         <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
       </Routes>
     </BrowserRouter>
