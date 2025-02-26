@@ -8,6 +8,7 @@ import Rolebased from "./utils/Rolebased.jsx";
 import AdminSummary from "./components/sidebar/AdminSummary.jsx";
 import DepartmentList from "./components/department/DepartmentList.jsx";
 import AddDepartment from "./components/department/AddDepartment.jsx";
+import EditDepartment from "./components/department/EditDepartment.jsx";
 
 const App = () => {
   return (
@@ -33,6 +34,10 @@ const App = () => {
           <Route
             path="/admin-dashboard/add-department"
             element={<AddDepartment />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/department/:id"
+            element={<EditDepartment />}
           ></Route>
         </Route>
 
